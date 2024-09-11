@@ -3,7 +3,7 @@ import { addPostRequest, getPostRequest, updatePostRequest } from "../../service
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function PostForm () {
+export default function PostForm() {
 
     const { register, handleSubmit, setValue } = useForm()
 
@@ -20,19 +20,19 @@ export default function PostForm () {
     }, [])
 
     return <>
-        <br/><br/><div className="container py-4">
+        <br /><br /><div className="container py-4">
             <div className="col-md-5 card mx-auto p-4 shadow">
                 <h5 className="card-header py-3 text-center">SAVE POST</h5><br />
                 <form
                     onSubmit={handleSubmit(async (values) => {
-                        if(params.id){
+                        if (params.id) {
                             try {
                                 const response = await updatePostRequest(params.id, values);
                                 alert(response.data.msg); navigate('/posts')
                             } catch (error) {
                                 alert(error.response.data.msg)
                             }
-                        }else{
+                        } else {
                             try {
                                 const response = await addPostRequest(values);
                                 alert(response.data.msg); navigate('/posts')
@@ -45,13 +45,13 @@ export default function PostForm () {
                     <div className="mb-4">
                         <input type="text" placeholder="Nombre del post"
                             className="form-control"
-                            { ...register('name', {required: true})} autoFocus/>
+                            {...register('name', { required: true })} autoFocus />
                     </div>
                     <div className="mb-4">
                         <input type="file" className="form-control"
-                        onChange={(e) => setValue('file', e.target.files[0])}/>
+                            onChange={(e) => setValue('file', e.target.files[0])} />
                     </div>
-                    
+
                     <div className="text-center">
                         <button className="btn btn-primary">Save</button>
                     </div>

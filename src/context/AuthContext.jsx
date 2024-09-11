@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
+
 import { authUser, mainUser } from "../services/auth";
+
 import Cookies from "js-cookie";
 
 export const AuthContext = createContext()
@@ -12,10 +14,10 @@ export const useAuth = () => {
     return context
 }
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
 
-    const [ user, setUser ] = useState(null)
-    const [ isAuthenticated, setIsAuthenticated ] = useState(false)
+    const [user, setUser] = useState(null)
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
 
     const signin = async (user) => {
         try {
@@ -24,12 +26,11 @@ export const AuthProvider = ({children}) => {
             setIsAuthenticated(true); setUser(response.data.usuario)
         } catch (error) {
             alert(error.response.data.msg)
-            window.location.href = '/'
         }
     }
 
     const signout = () => {
-        Cookies.remove('token'); window.location.href = '/'
+        Cookies.remove('token'); location.reload();
     }
 
     useEffect(() => {

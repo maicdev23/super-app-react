@@ -11,9 +11,9 @@ export const usePost = () => {
     return context
 }
 
-export const PostProvider = ({children}) => {
+export const PostProvider = ({ children }) => {
 
-    const [ posts, setPosts ] = useState([])
+    const [posts, setPosts] = useState([])
 
     const getPosts = async () => {
         try {

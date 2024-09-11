@@ -1,9 +1,9 @@
-export function PostCard ({post}) {
+export function PostCard({ post }) {
 
     return <>
-        <h6 className="card-header py-3 text-center">{post.name}</h6>
+        <h5 className="card-header py-3 text-center">{post.name}</h5>
         <div className="card-body">
-            <img src={ post.image } alt="" className="card-img"/>
+            <img src={post.cdn_file} alt="" className="card-img" />
         </div>
     </>
 }

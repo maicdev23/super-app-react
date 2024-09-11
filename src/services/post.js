@@ -1,27 +1,27 @@
 import axios from "axios"
 import Cookies from "js-cookie"
 
-const API = 'http://localhost:4000/api/v1'
+const API = 'https://dev-api-rest.onrender.com/api'
 
 export const getPostsRequest = () => {
-    return axios.get(`${API}/movie`, {
-        headers: { 
+    return axios.get(`${API}/post`, {
+        headers: {
             'x-access-token': Cookies.get('token')
         }
     })
 }
 
 export const getPostRequest = (id) => {
-    return axios.get(`${API}/movie/${id}`, {
-        headers: { 
+    return axios.get(`${API}/post/${id}`, {
+        headers: {
             'x-access-token': Cookies.get('token')
         }
     })
 }
 
 export const addPostRequest = (data) => {
-    return axios.post(`${API}/movie`, data, {
-        headers: { 
+    return axios.post(`${API}/post`, data, {
+        headers: {
             'x-access-token': Cookies.get('token'),
             'Content-Type': 'multipart/form-data'
         }
@@ -29,8 +29,8 @@ export const addPostRequest = (data) => {
 }
 
 export const updatePostRequest = (id, data) => {
-    return axios.put(`${API}/movie/${id}`, data, {
-        headers: { 
+    return axios.put(`${API}/post/${id}`, data, {
+        headers: {
             'x-access-token': Cookies.get('token'),
             'Content-Type': 'multipart/form-data'
         }
@@ -38,8 +38,8 @@ export const updatePostRequest = (id, data) => {
 }
 
 export const removePostRequest = async (id) => {
-    return axios.delete(`${API}/movie/${id}`, {
-        headers: { 
+    return axios.delete(`${API}/post/${id}`, {
+        headers: {
             'x-access-token': Cookies.get('token')
         }
     })
