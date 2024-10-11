@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { PostCard } from "../../components/PostCard"
-import { usePost } from "../../context/PostContext"
-
 import { Link } from "react-router-dom"
+
+import { usePost } from "../../context/PostContext"
+import PostCard from "../../components/PostCard"
 
 export default function Posts() {
 
@@ -17,31 +17,29 @@ export default function Posts() {
     }
 
     return <>
-        <br /><br /><div className="container py-4"><br />
-            {
-                posts.length === 0 && (
-                    <div className="text-center">
-                        <div className="col-md-5 card mx-auto p-4 shadow">
-                            <h5>NO HAY POST AUN</h5> <hr />
+        {
+            posts.length === 0 && (
+                <div className="text-center">
+                    <div className="col-md-5 card mx-auto p-4 shadow">
+                        <h5>NO HAY POST AUN</h5> <hr />
+                    </div>
+                </div>
+            )
+        }
+        <div className="row">
+            {posts.map((dato) => {
+                return <div className="col-md-3" key={dato.id} /*style={{height: '70vh', overflow: 'auto'}}*/ >
+                    <div className="card p-4 shadow">
+                        <PostCard post={dato} />
+                        <div className="d-flex justify-content-center">
+                            <button className="btn btn-secondary"
+                                onClick={() => handleRemovePost(dato.id)}
+                            >⛔</button>
+                            <Link to={`/post/${dato.id}`} className="btn btn-primary">🎯</Link>
                         </div>
                     </div>
-                )
-            }
-            <div className="row">
-                {posts.map((dato) => {
-                    return <div className="col-md-3" key={dato.id} /*style={{height: '70vh', overflow: 'auto'}}*/ >
-                        <div className="card p-4 shadow">
-                            <PostCard post={dato} />
-                            <div className="d-flex justify-content-center">
-                                <button className="btn btn-secondary"
-                                    onClick={() => handleRemovePost(dato.id)}
-                                >⛔</button>
-                                <Link to={`/post/${dato.id}`} className="btn btn-primary">🎯</Link>
-                            </div>
-                        </div>
-                    </div>
-                })}
-            </div>
+                </div>
+            })}
         </div>
     </>
 }

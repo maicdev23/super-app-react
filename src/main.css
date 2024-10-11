@@ -1,18 +1,25 @@
 body {
-    background: #444;
+    background: #202020;
     color: #fff;
 }
 
+nav {
+    background-color: #f9f9f9;
+}
+
 .card {
-    background: #333;
+    background: #222;
     color: #fff;
     text-align: center;
     border: 2px solid white;
-    border-radius: 20px;
 }
 
 .card img {
     width: 165px;
     height: 165px;
     border-radius: 50%;
+}
+
+.contenedor {
+    margin-top: 40px;
 }
